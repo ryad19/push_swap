@@ -12,12 +12,15 @@
 
 #include "push_swap.h"
 
-void	print_error_and_exit(t_stack **a, t_stack **b)
+void	print_error_and_exit(t_stack **stack_a, t_stack **stack_b, char **args, int is_split)
 {
-	if (a && *a)
-		free_stack(a);
-	if (b && *b)
-		free_stack(b);
+	if (stack_a)
+		free_stack(stack_a);
+	if (stack_b)
+		free_stack(stack_b);
+	if (is_split && args)
+		free_matrix(args);
 	write(2, "Error\n", 6);
 	exit(1);
 }
+
