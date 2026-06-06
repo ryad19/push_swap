@@ -9,12 +9,12 @@
 /*   Updated: 2026/06/05 19:24:03 by sarrbene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_stack
 {
@@ -32,6 +32,12 @@ void	free_stack(t_stack **stack);
 int		stack_size(t_stack *stack);
 /* utils*/
 
-void	print_error_and_exit(t_stack **a, t_stack **b);
+void	print_error_and_exit(t_stack **a, t_stack **b, char **args, int is_split);
+void	free_matrix(char **matrix);
+
+/*Parsing*/
+
+long long 	ft_atoi_strict(const char *str, int *error);
+void	process_and_fill_stack(char **args, t_stack **stack, int is_split);
 
 #endif
