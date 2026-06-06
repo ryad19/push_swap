@@ -43,3 +43,16 @@ void	add_back(t_stack **stack, t_stack *node)
 	tmp->next = node;
 	node->prev = tmp;
 }
+int	stack_size(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}
+
