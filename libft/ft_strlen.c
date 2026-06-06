@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/20 18:32:42 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/13 03:54:33 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+size_t	ft_strlen(const char *str)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	size_t	sum;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
-	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
-	}
-	*stack = NULL;
+	sum = 0;
+	while (*str++ != '\0')
+		sum += 1;
+	return (sum);
 }

@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/22 11:53:59 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/09 10:25:30 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+int	ft_atoi(const char *str)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	int	sign;
+	int	num;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	sign = 1;
+	num = 0;
+	if (*str == '+' || *str == '-')
 	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	*stack = NULL;
+	while (*str >= 48 && *str <= 57)
+	{
+		num = (num * 10) + (*str - 48);
+		str++;
+	}
+	return (num * sign);
 }

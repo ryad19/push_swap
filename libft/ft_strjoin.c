@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/24 06:22:27 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/06 19:11:40 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	char	*str;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
-	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
-	}
-	*stack = NULL;
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (str == NULL)
+		return (NULL);
+	ft_memcpy(str, s1, ft_strlen(s1));
+	ft_memcpy(str + ft_strlen(s1), s2, ft_strlen(s2));
+	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	return (str);
 }

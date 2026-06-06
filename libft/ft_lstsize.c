@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/27 07:06:10 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/02 16:13:05 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+int	ft_lstsize(t_list *lst)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	t_list	*cpy;
+	int		sum;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
+	cpy = lst;
+	sum = 0;
+	while (cpy)
 	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
+		sum++;
+		cpy = cpy->next;
 	}
-	*stack = NULL;
+	return (sum);
 }

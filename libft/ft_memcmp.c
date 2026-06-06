@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/22 10:24:53 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/06 19:10:37 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	size_t				i;
+	const unsigned char	*str1;
+	const unsigned char	*str2;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
+	str1 = s1;
+	str2 = s2;
+	i = 0;
+	while (n--)
 	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
+		if (*str1 != *str2)
+			return (str1[i] - str2[i]);
+		str1++;
+		str2++;
 	}
-	*stack = NULL;
+	return (0);
 }

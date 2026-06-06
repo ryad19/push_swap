@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/27 16:55:02 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/12 19:36:16 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	t_list	*n_lst;
+	t_list	*node;
+	void	*val;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
+	if (!lst || !f || !del)
+		return (NULL);
+	n_lst = NULL;
+	while (lst)
 	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
+		val = f(lst->content);
+		node = ft_lstnew(val);
+		if (!node)
+		{
+			del(val);
+			ft_lstclear(&n_lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&n_lst, node);
+		lst = lst->next;
 	}
-	*stack = NULL;
+	return (n_lst);
 }

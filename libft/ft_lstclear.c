@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/27 16:02:03 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/12 19:21:37 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	t_list	*cpy;
 
-
-	if (!stack || !*stack)
+	if (!lst || !del)
 		return ;
-	current = *stack;
-	while (current)
+	while (*lst)
 	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
+		cpy = *lst;
+		*lst = (*lst)->next;
+		ft_lstdelone(cpy, del);
 	}
-	*stack = NULL;
 }

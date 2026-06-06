@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/28 18:22:00 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/02 18:18:41 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	int	i;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
+	i = 0;
+	while (s[i])
 	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
+		f(i, &s[i]);
+		i++;
 	}
-	*stack = NULL;
 }

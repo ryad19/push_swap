@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/27 07:11:08 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/02 16:12:36 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	t_list	*cpy;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
-	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
-	}
-	*stack = NULL;
+	if (!lst)
+		return (NULL);
+	cpy = lst;
+	while (cpy->next)
+		cpy = cpy->next;
+	return (cpy);
 }

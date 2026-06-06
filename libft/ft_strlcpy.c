@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/21 11:23:54 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/02 19:01:10 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	size_t	i;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
+	i = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (src[i] != '\0' && i < (size - 1))
 	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
+		dest[i] = src[i];
+		i++;
 	}
-	*stack = NULL;
+	dest[i] = '\0';
+	return (ft_strlen(src));
 }

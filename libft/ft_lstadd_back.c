@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_node.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 15:33:58 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 17:12:12 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/27 07:53:59 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/02 16:12:00 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_stack	*new_node(int value)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_stack		*node;
+	t_list	*cpy;
 
-	node = malloc(sizeof (t_stack));
-	if (!node)
-		return (NULL);
-	node->value = value;
-	node->index = -1;
-	node->next = node;
-	node->prev = node;
-	return (node);
-}
-
-void	add_back(t_stack **stack, t_stack *node)
-{
-	if (!stack || !node)
+	if (!new)
 		return ;
-	if (!*stack)
+	if (!*lst)
 	{
-		*stack = node;
+		*lst = new;
 		return ;
 	}
-	(*stack)->prev->next = node;
-	node->prev = (*stack)->prev;
-	node->next = *stack;
-	(*stack)->prev = node;
+	cpy = ft_lstlast(*lst);
+	cpy->next = new;
 }

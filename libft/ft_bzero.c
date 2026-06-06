@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/20 22:56:34 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/02 16:11:17 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+void	ft_bzero(void *s, size_t n)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	unsigned char	*p;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
+	p = s;
+	while (n > 0)
 	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
+		*p++ = 0;
+		n--;
 	}
-	*stack = NULL;
 }

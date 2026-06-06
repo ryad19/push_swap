@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/22 11:18:39 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/12 01:52:26 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	size_t	i;
+	size_t	j;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
+	if (*little == '\0')
+		return ((char *)big);
+	i = 0;
+	while ((i < len) && big[i])
 	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
+		j = 0;
+		while (big[i + j] == little[j] && (i + j < len) && big[i + j])
+		{
+			j++;
+			if (little[j] == '\0')
+				return ((char *)&big[i]);
+		}
+		i++;
 	}
-	*stack = NULL;
+	return (NULL);
 }

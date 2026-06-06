@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:02:34 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 16:51:43 by achafai          ###   ########.fr       */
+/*   Created: 2026/04/22 10:11:03 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/06 19:10:31 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack **stack)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	const unsigned char	*ptr;
 
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
+	ptr = s;
+	while (n--)
 	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
+		if (*ptr == (unsigned char)c)
+			return ((void *)ptr);
+		ptr++;
 	}
-	*stack = NULL;
+	return (NULL);
 }
