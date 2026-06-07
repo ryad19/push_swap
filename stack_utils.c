@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_node.c                                         :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 15:33:58 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 17:12:12 by achafai          ###   ########.fr       */
+/*   Created: 2026/06/06 20:56:50 by achafai           #+#    #+#             */
+/*   Updated: 2026/06/06 20:59:20 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_stack	*new_node(int value)
 {
-	t_stack		*node;
+	t_stack	*node;
 
-	node = malloc(sizeof (t_stack));
+	node = malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
 	node->value = value;
@@ -39,4 +39,39 @@ void	add_back(t_stack **stack, t_stack *node)
 	node->prev = (*stack)->prev;
 	node->next = *stack;
 	(*stack)->prev = node;
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+	t_stack	*current;
+
+	if (!stack || !*stack)
+		return ;
+	current = *stack;
+	current->prev->next = NULL;
+	while (current)
+	{
+		tmp = current->next;
+		free(current);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}
+
+int	stack_size(t_stack *stack)
+{
+	int		size;
+	t_stack	*end;
+
+	if (!stack)
+		return (0);
+	end = stack->prev;
+	size = 0;
+	while (stack != end)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
 }

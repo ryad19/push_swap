@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarrbene <sarrbene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 16:52:09 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/05 16:56:13 by sarrbene         ###   ########.fr       */
+/*   Updated: 2026/06/07 17:09:42 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error_and_exit(t_stack **a, t_stack **b)
+void	handle_error(t_stack **a, t_stack **b)
 {
 	if (a && *a)
 		free_stack(a);
