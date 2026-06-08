@@ -6,13 +6,13 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:56:50 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/06 20:59:20 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/08 15:28:22 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*new_node(int value)
+t_stack	*new_node(int value, int index)
 {
 	t_stack	*node;
 
@@ -20,7 +20,7 @@ t_stack	*new_node(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
-	node->index = -1;
+	node->index = index;
 	node->next = node;
 	node->prev = node;
 	return (node);
@@ -74,4 +74,5 @@ int	stack_size(t_stack *stack)
 		stack = stack->next;
 	}
 	return (size);
+	//return (stack->prev->index +1);
 }

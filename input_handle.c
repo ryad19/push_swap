@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 03:13:47 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/07 20:10:59 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/08 16:03:44 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,20 @@ void	parse_args(char **argv, int argc, t_stack	**stack)
 {
 	int		i;
 	int		content;
+	t_stack	*head;
 
+	head = *stack;
 	if (argc < 2)
 		handle_error(NULL, NULL);
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (i + 1 < argc)
 	{
-		if (!ft_is_num(argv[i]))
+		if (!ft_is_num(argv[i + 1]))
 			handle_error(stack, NULL);
 		content = strict_atoi(argv[i], stack);
-		add_back(stack, new_node(content));
+		if (has_duplicate(content, head))
+			handle_error(stack, NULL);
+		add_back(stack, new_node(content, i));
 		i++;
 	}
 }

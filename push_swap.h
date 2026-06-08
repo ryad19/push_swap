@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:11:32 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/07 20:14:18 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/08 16:01:42 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack
 
 /* stack*/
 
-t_stack				*new_node(int value);
+t_stack				*new_node(int value, int index);
 void				add_back(t_stack **stack, t_stack *node);
 void				free_stack(t_stack **stack);
 int					stack_size(t_stack *stack);
@@ -38,5 +38,6 @@ int					ft_isdigit(int c);
 int					ft_is_num(char *str);
 int					strict_atoi(char *str, t_stack **a);
 void				parse_args(char **argv, int argc, t_stack **stack);
+int					has_duplicate(int value, t_stack *stk);
 
 #endif
