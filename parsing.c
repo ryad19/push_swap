@@ -42,3 +42,17 @@ long long	ft_atoi_strict(const char *str, int *error)
 	}
 	return (sign * result);
 }
+/*Scans the existing stack nodes to check for duplicate numbers*/
+
+int	has_duplicates(t_stack *stack, int num)
+{
+	while (stack)
+	{
+		if (stack->value == num)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}
+
+
