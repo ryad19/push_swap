@@ -35,6 +35,12 @@ int		stack_size(t_stack *stack);
 void	print_error_and_exit(t_stack **a, t_stack **b, char **args, int is_split);
 void	free_matrix(char **matrix);
 
+/*Parsing*/
+
+long long 	ft_atoi_strict(const char *str, int *error);
+void	process_and_fill_stack(char **args, t_stack **stack, int is_split);
+int	has_duplicates(t_stack *stack, int num);
+
 *Operations*/
 
 void	sa(t_stack **stack_a);
