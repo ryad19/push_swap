@@ -6,11 +6,13 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 03:13:47 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/07 19:52:31 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/17 16:48:29 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/libft.h"
+
 
 int	ft_is_num(char *str)
 {
@@ -69,4 +71,16 @@ void	parse_args(char **argv, int argc)
 		add_back(&stack, new_node(content));
 		i++;
 	}
+}
+
+char	*strategy_slctr(char *flag)
+{
+	if (!ft_strncmp(flag, "--simple", ft_strlen("--simple")))
+		return (flag);
+	if (!ft_strncmp(flag, "--medium", ft_strlen("--medium")))
+		return (flag);
+	if (!ft_strncmp(flag, "--complex", ft_strlen("--complex")))
+		return (flag);
+	if (!ft_strncmp(flag, "--adaptive", ft_strlen("--adaptive")))
+		return (flag);
 }
