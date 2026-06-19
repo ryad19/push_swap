@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:56:50 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/19 15:48:57 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/19 15:53:57 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_stack	*new_node(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
-	node->index = index;
+	node->index = -1;
 	node->next = node;
 	node->prev = node;
 	return (node);
