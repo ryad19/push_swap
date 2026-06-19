@@ -6,16 +6,16 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:11:32 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/07 17:10:08 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/19 11:35:21 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
 
 typedef struct s_stack
 {
@@ -25,14 +25,78 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
-/* stack*/
+typedef enum e_strategy
+{
+	ADAPTIVE,
+	SIMPLE,
+	MEDIUM,
+	COMPLEX
+}					t_strategy;
 
-t_stack	*new_node(int value);
-void	add_back(t_stack **stack, t_stack *node);
-void	free_stack(t_stack **stack);
-int		stack_size(t_stack *stack);
-/* utils*/
+typedef struct s_bench
+{
+	int				enabled;
+	int				total;
+	int				sa;
+	int				sb;
+	int				ss;
+	int				pa;
+	int				pb;
+	int				ra;
+	int				rb;
+	int				rr;
+	int				rra;
+	int				rrb;
+	int				rrr;
+}					t_bench;
 
-void	handle_error(t_stack **a, t_stack **b);
+/* parsing.c */
+t_strategy			parse_strategy(char *arg);
+void				parse_numbers(t_stack **a, int argc, char **argv,
+						int start_indx);
+int					has_duplicates(t_stack *stack);
 
+/* utils_memory.c */
+void				exit_error(t_stack **a, t_stack **b, char **arr);
+void				free_stack(t_stack **stack);
+void				free_split(char **arr);
+
+/* utils_math.c */
+int					ft_is_num(char *str);
+int					strict_atoi(char *str, t_stack **a, char **arr);
+float				compute_disorder(t_stack *a);
+
+/* stack_init.c */
+t_stack				*new_node(int value);
+void				add_back(t_stack **stack, t_stack *node);
+
+/* stack_utils.c */
+int					stack_size(t_stack *stack);
+int					is_sorted(t_stack *stack);
+void				assign_indx(t_stack *stack);
+
+/* op_push.c */
+void				pa(t_stack **a, t_stack **b, t_bench *bench);
+void				pb(t_stack **a, t_stack **b, t_bench *bench);
+
+/* op_swap.c */
+void				sa(t_stack **a, t_bench *bench);
+void				sb(t_stack **a, t_bench *bench);
+void				ss(t_stack **a, t_stack **b, t_bench *bench);
+
+/* op_rotate.c */
+void				ra(t_stack **a, t_bench *bench);
+void				rb(t_stack **a, t_bench *bench);
+void				rr(t_stack **a, t_stack **b, t_bench *bench);
+
+/* op_rev_rotate.c */
+void				rra(t_stack **a, t_bench *bench);
+void				rrb(t_stack **a, t_bench *bench);
+void				rrr(t_stack **a, t_stack **b, t_bench *bench);
+
+/* sort_simple.c */
+
+/* sort_medium.c */
+
+/* sort_complex.c */
 #endif
