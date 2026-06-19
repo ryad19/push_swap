@@ -1,0 +1,18 @@
+push_swap/
+├── Makefile
+├── includes/
+│   └── push_swap.h
+├── srcs/
+│   ├── main.c              # main, parse_args, validate, init_stacks, run
+│   ├── ops_swap.c          # sa, sb, ss
+│   ├── ops_push.c          # pa, pb
+│   ├── ops_rotate.c        # ra, rb, rr
+│   ├── ops_rrotate.c       # rra, rrb, rrr
+│   ├── stack_utils.c       # init_stack, new_node, push_node, free_stack, find_min
+│   ├── stack_utils2.c      # find_max, stack_sorted, get_index, stack_size (if needed)
+│   ├── disorder.c          # compute_disorder, count_mistakes, (helpers)
+│   ├── sort_simple.c       # selection sort helpers + main sort function
+│   ├── sort_medium.c       # chunk sort helpers + main sort function
+│   ├── sort_complex.c      # radix sort helpers + main sort function
+│   ├── sort_adaptive.c     # dispatcher + thresholds
+│   └── error.c             # handle_error, validate_int, check_duplicates, (helpers)

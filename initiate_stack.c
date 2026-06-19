@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   initiate_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:56:50 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/06 20:59:20 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/19 11:46:07 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,6 @@ void	add_back(t_stack **stack, t_stack *node)
 	node->prev = (*stack)->prev;
 	node->next = *stack;
 	(*stack)->prev = node;
-}
-
-void	free_stack(t_stack **stack)
-{
-	t_stack	*tmp;
-	t_stack	*current;
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	current->prev->next = NULL;
-	while (current)
-	{
-		tmp = current->next;
-		free(current);
-		*stack = tmp;
-	}
-	*stack = NULL;
 }
 
 int	stack_size(t_stack *stack)
