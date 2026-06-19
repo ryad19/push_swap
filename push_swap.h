@@ -12,9 +12,11 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
+#include "print/ft_printf.h"
+#include "libft/libft.h"
 
 typedef struct s_stack
 {
@@ -24,37 +26,78 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
-/* stack*/
+typedef enum e_strategy
+{
+	ADAPTIVE,
+	SIMPLE,
+	MEDIUM,
+	COMPLEX
+}					t_strategy;
 
-t_stack	*new_node(int value);
-void	add_back(t_stack **stack, t_stack *node);
-void	free_stack(t_stack **stack);
-int		stack_size(t_stack *stack);
-/* utils*/
+typedef struct s_bench
+{
+	int				enabled;
+	int				total;
+	int				sa;
+	int				sb;
+	int				ss;
+	int				pa;
+	int				pb;
+	int				ra;
+	int				rb;
+	int				rr;
+	int				rra;
+	int				rrb;
+	int				rrr;
+}					t_bench;
 
-void	print_error_and_exit(t_stack **a, t_stack **b, char **args, int is_split);
-void	free_matrix(char **matrix);
+/* parsing.c */
+t_strategy			parse_strategy(char *arg);
+void				parse_numbers(t_stack **a, int argc, char **argv,
+						int start_indx);
+int					has_duplicates(t_stack *stack);
 
-/*Parsing*/
+/* utils_memory.c */
+void				exit_error(t_stack **a, t_stack **b, char **arr);
+void				free_stack(t_stack **stack);
+void				free_split(char **arr);
 
-long long 	ft_atoi_strict(const char *str, int *error);
-void	process_and_fill_stack(char **args, t_stack **stack, int is_split);
-int	has_duplicates(t_stack *stack, int num);
+/* utils_math.c */
+int					ft_is_num(char *str);
+int					strict_atoi(char *str, t_stack **a, char **arr);
+float				compute_disorder(t_stack *a);
 
-*Operations*/
+/* stack_init.c */
+t_stack				*new_node(int value);
+void				add_back(t_stack **stack, t_stack *node);
 
-void	sa(t_stack **stack_a);
-void	sb(t_stack **stack_b);
-void	ss(t_stack **stack_a, t_stack **stack_b);
-void	pa(t_stack **stack_a, t_stack **stack_b);
-void	pb(t_stack **stack_b, t_stack **stack_a);
-void	ra(t_stack **stack_a);
-void	rb(t_stack **stack_b);
-void	rr(t_stack **stack_a, t_stack **stack_b);
-void	rra(t_stack **stack_a);
-void	rrb(t_stack **stack_b);
-void	rrr(t_stack **stack_a, t_stack **stack_b);
+/* stack_utils.c */
+int					stack_size(t_stack *stack);
+int					is_sorted(t_stack *stack);
+void				assign_indx(t_stack *stack);
 
+/* op_push.c */
+void				pa(t_stack **a, t_stack **b, t_bench *bench);
+void				pb(t_stack **a, t_stack **b, t_bench *bench);
 
+/* op_swap.c */
+void				sa(t_stack **a, t_bench *bench);
+void				sb(t_stack **a, t_bench *bench);
+void				ss(t_stack **a, t_stack **b, t_bench *bench);
 
+/* op_rotate.c */
+void				ra(t_stack **a, t_bench *bench);
+void				rb(t_stack **a, t_bench *bench);
+void				rr(t_stack **a, t_stack **b, t_bench *bench);
+
+/* op_rev_rotate.c */
+void				rra(t_stack **a, t_bench *bench);
+void				rrb(t_stack **a, t_bench *bench);
+void				rrr(t_stack **a, t_stack **b, t_bench *bench);
+
+/* sort_simple.c */
+
+/* sort_medium.c */
+
+/* sort_complex.c */
 #endif
