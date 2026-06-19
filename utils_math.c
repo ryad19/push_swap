@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:21:06 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/19 10:41:13 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/19 12:02:36 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ int	ft_is_num(char *str)
 
 int	strict_atoi(char *str, t_stack **a)
 {
-	long	i;
-	int		num;
+	long	num;
 	int		sign;
 
 	sign = 1;
@@ -79,4 +78,30 @@ int	strict_atoi(char *str, t_stack **a)
 		str++;
 	}
 	return ((int)(num * sign));
+<<<<<<< HEAD:utils_math.c
 }
+=======
+}
+
+void	parse_args(char **argv, int argc, t_stack	**stack)
+{
+	int		i;
+	int		content;
+	t_stack	*head;
+
+	head = *stack;
+	if (argc < 2)
+		handle_error(NULL, NULL);
+	i = 0;
+	while (i + 1 < argc)
+	{
+		if (!ft_is_num(argv[i + 1]))
+			handle_error(stack, NULL);
+		content = strict_atoi(argv[i], stack);
+		if (has_duplicate(content, head))
+			handle_error(stack, NULL);
+		add_back(stack, new_node(content, i));
+		i++;
+	}
+}
+>>>>>>> 039a3be7f5d43482f30bda07b8f11652273dada6:input_handle.c
