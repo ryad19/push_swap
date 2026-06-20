@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_rev_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarrbene <sarrbene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:54:30 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/09 14:01:27 by sarrbene         ###   ########.fr       */
+/*   Updated: 2026/06/20 17:35:03 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,41 @@
 
 static void	reverse_rotate_generic(t_stack **stack)
 {
-	t_stack		*first;
-	t_stack		*last;
-
-	if (!stack || !*stack ||!(*stack)->next)
+	if (!stack || !*stack ||((*stack)->next == *stack))
 		return ;
-	first = *stack;
-	last = *stack;
-	while (last->next)
-		last = last->next;
-	last->prev->next = NULL;
-	last->next = first;
-	first->prev = last;
-	last->prev = NULL;
-	*stack = last;
+	*stack = (*stack)->prev;
 }
 
-void	rra(t_stack **stack_a)
+void	rra(t_stack **stack_a, t_bench *bench)
 {
 	reverse_rotate_generic(stack_a);
 	write(1, "rra\n", 4);
+	if (bench && bench->enabled)
+	{
+		bench->rra++;
+		bench->total++;
+	}
 }
 
-void	rrb(t_stack **stack_b)
+void	rrb(t_stack **stack_b, t_bench *bench)
 {
 	reverse_rotate_generic(stack_b);
 	write(1, "rrb\n", 4);
+	if (bench && bench->enabled)
+	{
+		bench->rrb++;
+		bench->total++;
+	}
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	reverse_rotate_generic(stack_a);
 	reverse_rotate_generic(stack_b);
 	write(1, "rrr\n", 4);
+	if (bench && bench->enabled)
+	{
+		bench->rrr++;
+		bench->total++;
+	}
 }
