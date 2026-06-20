@@ -40,5 +40,20 @@ void	add_back(t_stack **stack, t_stack *node)
 	node->next = *stack;
 	(*stack)->prev = node;
 }
+<<<<<<< HEAD:initiate_stack.c
 
+=======
+int	stack_size(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}
+>>>>>>> 6910700eb8fd3a5accf61139881bbe294c366b8a:new_node.c
 

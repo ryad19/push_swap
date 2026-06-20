@@ -6,18 +6,18 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:11:32 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/19 12:05:01 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/20 14:47:03 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "libft/libft.h"
+# include "print/ft_printf.h"
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include "print/ft_printf.h"
-#include "libft/libft.h"
 
 typedef struct s_stack
 {
@@ -101,4 +101,5 @@ void				rrr(t_stack **a, t_stack **b, t_bench *bench);
 /* sort_medium.c */
 
 /* sort_complex.c */
+
 #endif
