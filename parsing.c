@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 17:39:46 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/22 12:33:46 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/22 16:31:05 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,31 @@ int	has_duplicates(t_stack *stack)
 	return (0);
 }
 
-void	parse_numbers(t_stack **a, int argc, char **argv, t_bench *bench,
-		t_strategy *x)
+void	parse_numbers(t_stack **a, int argc, char **argv, int start_indx)
 {
 	int		i;
+	int		j;
 	char	**arr;
 
-	i = 1;
+	i = start_indx;
 	while (i < argc)
 	{
-		if (argv[i][0] == '-')
-		{
-			if (ft_strncmp(argv[i], "--bench", 7) == 0)
-			{
-				bench->enabled = 1;
-				i++;
-			}
-			*x = parse_strategy(argv[i]);
-			i++;
-		}
 		if (ft_strchr(argv[i], ' '))
+		{
 			arr = ft_split(argv[i], ' ');
+			if (!arr || !arr[0])
+				exit_error(a, NULL, arr);
+			j = 0;
+			while (arr[j])
+				add_back(a, new_node(strict_atoi(arr[j++], a, arr)));
+			free_split(arr);
+		}
+		else
+		{
+			if (!ft_is_num(argv[i]))
+				exit_error(a, NULL, NULL);
+			add_back(a, new_node(strict_atoi(argv[i], a, NULL)));
+		}
+		i++;
 	}
 }
