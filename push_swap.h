@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:11:32 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/20 14:47:03 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/22 11:21:09 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,9 @@ int					ft_is_num(char *str);
 int					strict_atoi(char *str, t_stack **a, char **arr);
 float				compute_disorder(t_stack *a);
 
-/* stack_init.c */
+/* stack_utils.c */
 t_stack				*new_node(int value);
 void				add_back(t_stack **stack, t_stack *node);
-
-/* stack_utils.c */
 int					stack_size(t_stack *stack);
 int					is_sorted(t_stack *stack);
 void				assign_indx(t_stack *stack);

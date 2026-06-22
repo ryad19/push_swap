@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:21:06 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/19 12:03:25 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/22 08:16:12 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_is_num(char *str)
 	return (1);
 }
 
-int	strict_atoi(char *str, t_stack **a)
+int	strict_atoi(char *str, t_stack **a, char **arr)
 {
 	long	num;
 	int		sign;
@@ -70,11 +70,13 @@ int	strict_atoi(char *str, t_stack **a)
 			sign *= -1;
 		str++;
 	}
-	while (*str >= 48 && *str <= 57)
+	if (!*str)
+		exit_error(a, NULL, arr);
+	while (*str >= '0' && *str <= '9')
 	{
-		num = (num * 10) + (*str - 48);
+		num = (num * 10) + (*str - '0');
 		if ((num * sign) > INT_MAX || (num * sign) < INT_MIN)
-			handle_error(a, NULL);
+			exit_error(a, NULL, arr);
 		str++;
 	}
 	return ((int)(num * sign));

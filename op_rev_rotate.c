@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:54:30 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/20 17:35:03 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/20 18:43:38 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static void	reverse_rotate_generic(t_stack **stack)
 {
-	if (!stack || !*stack ||((*stack)->next == *stack))
+	if (!stack || !*stack || ((*stack)->next == *stack))
 		return ;
 	*stack = (*stack)->prev;
 }

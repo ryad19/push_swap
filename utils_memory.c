@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 16:52:09 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/19 12:02:21 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/22 08:14:02 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	free_split(char **arr)
 	int	i;
 
 	if (!arr)
-        return ;
+		return ;
 	i = 0;
 	while (arr[i])
 	{

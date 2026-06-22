@@ -3,56 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarrbene <sarrbene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 17:39:46 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/06 17:58:02 by sarrbene         ###   ########.fr       */
+/*   Updated: 2026/06/22 12:33:46 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*Srict atoi that flags non-digits and detects integer overflow*/
-
-long long	ft_atoi_strict(const char *str, int *error)
+t_strategy	parse_strategy(char *arg)
 {
-	long long	result;
-	int			i;
-	int			sign;
-
-	result = 0;
-	sign = 1;
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	if (!str[i])
-		return (*error = 1, 0);
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (*error = 1, 0);
-		result = result * 10 + (str[i] - '0');
-		if ((sign * result) > INT_MAX || (sign * result) < INT_MAX)
-			return (*error = 1, 0);
-		i++;
-	}
-	return (sign * result);
+	if (ft_strncmp(arg, "--simple", 9) == 0)
+		return (SIMPLE);
+	if (ft_strncmp(arg, "--medium", 9) == 0)
+		return (MEDIUM);
+	if (ft_strncmp(arg, "--complex", 10) == 0)
+		return (COMPLEX);
+	return (ADAPTIVE);
 }
-/*Scans the existing stack nodes to check for duplicate numbers*/
 
-int	has_duplicates(t_stack *stack, int num)
+int	has_duplicates(t_stack *stack)
 {
-	while (stack)
+	t_stack	*temp;
+	t_stack	*end;
+
+	if (!stack || stack->next == stack)
+		return (0);
+	end = stack->prev;
+	while (stack != end)
 	{
-		if (stack->value == num)
-			return (1);
+		temp = stack->next;
+		while (temp != end->next)
+		{
+			if (stack->value == temp->value)
+				return (1);
+			temp = temp->next;
+		}
 		stack = stack->next;
 	}
 	return (0);
 }
 
+void	parse_numbers(t_stack **a, int argc, char **argv, t_bench *bench,
+		t_strategy *x)
+{
+	int		i;
+	char	**arr;
 
+	i = 1;
+	while (i < argc)
+	{
+		if (argv[i][0] == '-')
+		{
+			if (ft_strncmp(argv[i], "--bench", 7) == 0)
+			{
+				bench->enabled = 1;
+				i++;
+			}
+			*x = parse_strategy(argv[i]);
+			i++;
+		}
+		if (ft_strchr(argv[i], ' '))
+			arr = ft_split(argv[i], ' ');
+	}
+}
