@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:11:32 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/22 16:31:15 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/23 07:38:52 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ t_strategy			parse_strategy(char *arg);
 void				parse_numbers(t_stack **a, int argc, char **argv,
 						int start_indx);
 int					has_duplicates(t_stack *stack);
+void				print_float_fd(float num, int fd);
+void				print_bench(t_bench *bench, t_strategy strategy,
+						double disorder);
 
 /* utils_memory.c */
 void				exit_error(t_stack **a, t_stack **b, char **arr);
@@ -95,6 +98,10 @@ void				rrb(t_stack **a, t_bench *bench);
 void				rrr(t_stack **a, t_stack **b, t_bench *bench);
 
 /* sort_simple.c */
+int					get_min_index(t_stack *stack);
+void				sort_three(t_stack **a, t_bench *bench);
+void				push_min_to_b(t_stack **a, t_stack **b, t_bench *bench);
+void				sort_simple(t_stack **a, t_stack **b, t_bench *bench);
 
 /* sort_medium.c */
 

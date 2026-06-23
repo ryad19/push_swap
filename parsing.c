@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 17:39:46 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/22 16:31:05 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/23 01:21:34 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,49 @@ void	parse_numbers(t_stack **a, int argc, char **argv, int start_indx)
 		}
 		i++;
 	}
+}
+
+void	print_float_fd(float num, int fd)
+{
+	int	integer_part;
+	int	decimal_part;
+	int	i;
+
+	integer_part = (int)num;
+	decimal_part = (int)((num - integer_part) * 100);
+	ft_putnbr_fd(integer_part, fd);
+	ft_putchar_fd('.', fd);
+	if (decimal_part < 0)
+		decimal_part *= -1;
+	if (decimal_part < 10)
+		ft_putchar_fd('0', fd);
+	ft_putnbr_fd(decimal_part, fd);
+}
+
+void	print_bench(t_bench *bench, t_strategy strategy, double disorder)
+{
+	ft_putstr_fd("[bench] disorder: ", 2);
+	print_float_fd(disorder * 100.0f, 2);
+	ft_putstr_fd("%\n", 2);
+	if (strategy == SIMPLE)
+		ft_putstr_fd("[bench] Strategy: SIMPLE / O(n^2)\n", 2);
+	else if (strategy == MEDIUM)
+		ft_putstr_fd("[bench] Strategy: MEDIUM / O(n√n)\n", 2);
+	else if (strategy == COMPLEX)
+		ft_putstr_fd("[bench] Strategy: COMPLEX / O(n log n)\n", 2);
+	else
+	{
+		ft_putstr_fd("[bench] Strategy: ADAPTIVE /", 2);
+		if (disorder < 0.2f)
+			ft_putstr_fd(" O(n^2)\n", 2);
+		else if (disorder >= 0.5f)
+			ft_putstr_fd(" O(n log n)\n", 2);
+		else
+			ft_putstr_fd(" O(n√n)\n", 2);
+	}
+	ft_printf("[bench] total_ops: %d\n", bench->total);
+	ft_printf("[bench] sa: %d, sb: %d, ss: %d, pa: %d, pb: %d\n", bench->sa,
+		bench->sb, bench->ss, bench->pa, bench->pb);
+	ft_printf("[bench] ra: %d, rb: %d, rr: %d, rra: %d, rrb: %d, rrr: %d\n",
+		bench->ra, bench->rb, bench->rr, bench->rra, bench->rrb, bench->rrr);
 }
