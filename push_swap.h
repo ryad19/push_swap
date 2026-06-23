@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:11:32 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/23 07:38:52 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/23 08:07:03 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include "print/ft_printf.h"
+# include "printf/ft_printf.h"
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -106,5 +106,7 @@ void				sort_simple(t_stack **a, t_stack **b, t_bench *bench);
 /* sort_medium.c */
 
 /* sort_complex.c */
+int					get_max_bits(t_stack **stack);
+void				sort_complex(t_stack **a, t_stack **b, t_bench *bench);
 
 #endif
