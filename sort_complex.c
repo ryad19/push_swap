@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 08:07:18 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/23 08:51:19 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/23 17:14:30 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	sort_complex(t_stack **a, t_stack **b, t_bench *bench)
 			if ((((*a)->index >> i) & 1) == 1)
 				ra(a, bench);
 			else
-				pb(a, b, bench);
+				pb(b, a, bench);
 			j++;
 		}
 		while (*b)

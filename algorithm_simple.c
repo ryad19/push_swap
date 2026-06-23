@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_simple.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarrbene <sarrbene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 16:03:00 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/22 16:58:37 by sarrbene         ###   ########.fr       */
+/*   Updated: 2026/06/23 16:16:26 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	push_min_to_b(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 
 // Function to sort 3 elements based on checking and comparing the top, middle, and bottom indices in the stack.
 
-void	sort_three(t_stack **stack_, t_bench *bench)
+void	sort_three(t_stack **stack_a, t_bench *bench)
 {
 	int	top;
 	int	mid;

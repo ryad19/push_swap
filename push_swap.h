@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:11:32 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/23 08:07:03 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/23 17:17:25 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void				assign_indx(t_stack *stack);
 
 /* op_push.c */
 void				pa(t_stack **a, t_stack **b, t_bench *bench);
-void				pb(t_stack **a, t_stack **b, t_bench *bench);
+void				pb(t_stack **b, t_stack **a, t_bench *bench);
 
 /* op_swap.c */
 void				sa(t_stack **a, t_bench *bench);
@@ -104,6 +104,13 @@ void				push_min_to_b(t_stack **a, t_stack **b, t_bench *bench);
 void				sort_simple(t_stack **a, t_stack **b, t_bench *bench);
 
 /* sort_medium.c */
+int					find_root(int n);
+t_stack				*get_max(t_stack *stack);
+void				phase_two(t_stack **stack_a, t_stack **stack_b,
+						t_bench *bench);
+void				phase_one(t_stack **a, t_stack **b, t_bench *bench,
+						int chunk_size);
+void				sort_medium(t_stack **a, t_stack **b, t_bench *bench);
 
 /* sort_complex.c */
 int					get_max_bits(t_stack **stack);
