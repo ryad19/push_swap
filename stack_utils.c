@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: debian <debian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:25:32 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/25 17:43:09 by debian           ###   ########.fr       */
+/*   Updated: 2026/06/28 17:09:11 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	assign_indx(t_stack *stack)
 		j = 0;
 		while (j++ < stack_size(stack))
 		{
-			if (current->value < cmp->value)
+			if (current->value > cmp->value)
 				count++;
 			cmp = cmp->next;
 		}

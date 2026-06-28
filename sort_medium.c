@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 15:48:05 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/23 17:23:33 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/23 19:46:29 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,15 @@ void	phase_one(t_stack **a, t_stack **b, t_bench *bench, int chunk_size)
 	{
 		if ((*a)->index <= pushed)
 		{
-			pb(a, b, bench);
+			pb(b, a, bench);
 			rb(b, bench);
 			pushed++;
 		}
 		else if ((*a)->index <= pushed + chunk_size)
-			pb(a, b, bench);
+		{
+			pb(b, a, bench);
+			pushed++;
+		}
 		else
 			ra(a, bench);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_simple.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: debian <debian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 16:03:00 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/25 17:41:19 by debian           ###   ########.fr       */
+/*   Updated: 2026/06/28 17:07:29 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 // Helper function to find the minimum index currently present in the stack.
 int	get_min_index(t_stack *stack)
 {
-	int	min;
+	int		min;
+	t_stack	*temp;
 
 	min = stack->index;
-	while (stack)
+	temp = stack->next;
+	while (temp != stack)
 	{
-		if (stack->index < min)
-			min = stack->index;
-		stack = stack->next;
+		if (temp->index < min)
+			min = temp->index;
+		temp = temp->next;
 	}
 	return (min);
 }
@@ -34,16 +36,18 @@ void	push_min_to_b(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 	t_stack	*tmp;
 	int		pos;
 	int		min_idx;
+	int		size;
 
 	pos = 0;
 	tmp = *stack_a;
+	size = stack_size(*stack_a);
 	min_idx = get_min_index(*stack_a);
 	while (tmp && tmp->index != min_idx)
 	{
 		pos++;
 		tmp = tmp->next;
 	}
-	if (pos <= stack_size(*stack_a) / 2)
+	if (pos <= size / 2)
 	{
 		while ((*stack_a)->index != min_idx)
 			ra(stack_a, bench);
@@ -65,6 +69,8 @@ void	sort_three(t_stack **stack_a, t_bench *bench)
 	int	mid;
 	int	bot;
 
+	if (stack_size(*stack_a) != 3)
+        return ;
 	top = (*stack_a)->index;
 	mid = (*stack_a)->next->index;
 	bot = (*stack_a)->prev->index;

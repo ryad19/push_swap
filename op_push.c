@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:04:29 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/20 18:39:30 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/23 19:44:10 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	push_generic(t_stack **dest, t_stack **src)
 	else
 	{
 		*src = (*src)->next;
-		node_to_move->next->prev = *src;
 		(*src)->prev = node_to_move->prev;
+		node_to_move->prev->next = *src;
 		node_to_move->next = node_to_move;
 		node_to_move->prev = node_to_move;
 	}
