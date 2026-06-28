@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: debian <debian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 17:39:46 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/23 01:21:34 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/25 17:39:48 by debian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	print_float_fd(float num, int fd)
 {
 	int	integer_part;
 	int	decimal_part;
-	int	i;
 
 	integer_part = (int)num;
 	decimal_part = (int)((num - integer_part) * 100);

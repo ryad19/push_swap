@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: debian <debian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 11:27:24 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/23 17:24:53 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/27 19:58:37 by debian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,33 @@ static void	run_strategy(t_stack **a, t_stack **b, t_bench *bench,
 static int	handle_flag(char **argv, t_bench *bench, t_strategy *strategy)
 {
 	int	i;
+	int	index;
 
 	i = 1;
-	while (i < 3 && argv[i] && argv[i][0] == '-' && argv[i][1] == '-')
+	index = 1;
+	while (i < 3)
 	{
-		if (ft_strncmp(argv[i], "--bench", 8) == 0)
-			bench->enabled = 1;
-		else
-			*strategy = parse_strategy(argv[i]);
+		if (argv[i] && argv[i][0] == '-' && argv[i][1] == '-')
+		{
+			if (ft_strncmp(argv[i], "--bench", 8) == 0)
+			{
+				bench->enabled = 1;
+				i++;
+				index++;
+			}
+			else
+			{
+				*strategy = parse_strategy(argv[i]);
+				i++;
+				index++;
+			}
+		}
 		i++;
 	}
-	return (i);
+	return (index);
 }
 
-int	main(int argc, char const *argv[])
+int	main(int argc, char **argv)
 {
 	int			i;
 	t_stack		*a;

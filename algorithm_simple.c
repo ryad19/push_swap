@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_simple.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: debian <debian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 16:03:00 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/23 16:16:26 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/25 17:41:19 by debian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 // Helper function to find the minimum index currently present in the stack.
-static int	get_min_index(t_stack *stack)
+int	get_min_index(t_stack *stack)
 {
 	int	min;
 
@@ -23,14 +22,14 @@ static int	get_min_index(t_stack *stack)
 	{
 		if (stack->index < min)
 			min = stack->index;
-		stack->next;
+		stack = stack->next;
 	}
 	return (min);
 }
-// Helper Function to calculate the position of smallest element, 
+// Helper Function to calculate the position of smallest element,
 // rotate the stackto bring it to the top, and then push it  to Stack B.
 
-static void	push_min_to_b(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
+void	push_min_to_b(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	t_stack	*tmp;
 	int		pos;
@@ -42,9 +41,9 @@ static void	push_min_to_b(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 	while (tmp && tmp->index != min_idx)
 	{
 		pos++;
-		tmp = tmp->index;
+		tmp = tmp->next;
 	}
-	if (pos <= bench->size_a / 2)
+	if (pos <= stack_size(*stack_a) / 2)
 	{
 		while ((*stack_a)->index != min_idx)
 			ra(stack_a, bench);
@@ -54,10 +53,11 @@ static void	push_min_to_b(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 		while ((*stack_a)->index != min_idx)
 			rra(stack_a, bench);
 	}
-	pb (stack_b, stack_a, bench);
+	pb(stack_b, stack_a, bench);
 }
 
-// Function to sort 3 elements based on checking and comparing the top, middle, and bottom indices in the stack.
+// Function to sort 3 elements based on checking and comparing the top, middle,
+//and bottom indices in the stack.
 
 void	sort_three(t_stack **stack_a, t_bench *bench)
 {
@@ -67,7 +67,7 @@ void	sort_three(t_stack **stack_a, t_bench *bench)
 
 	top = (*stack_a)->index;
 	mid = (*stack_a)->next->index;
-	bot = (*stack_a)->next->next->index;
+	bot = (*stack_a)->prev->index;
 	if (top > mid && mid > bot)
 	{
 		sa(stack_a, bench);
@@ -90,17 +90,27 @@ void	sort_three(t_stack **stack_a, t_bench *bench)
 
 void	sort_simple(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
-	(void)stack_b;
+	int	size;
+
 	if (!stack_a || !*stack_a || is_sorted(*stack_a))
 		return ;
-	if (bench->size_a == 2)
+	size = stack_size(*stack_a);
+	if (size == 2)
 	{
 		sa(stack_a, bench);
 		return ;
 	}
-	if (bench->size_a == 3)
+	if (size == 3)
 	{
 		sort_three(stack_a, bench);
 		return ;
+	}
+	else if (size == 4 || size == 5)
+	{
+		while (stack_size(*stack_a) > 3)
+			push_min_to_b(stack_a, stack_b, bench);
+		sort_three(stack_a, bench);
+		while (*stack_b)
+			pa(stack_a, stack_b, bench);
 	}
 }
