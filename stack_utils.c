@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:25:32 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/28 17:09:11 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/29 17:36:42 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	stack_size(t_stack *stack)
 		return (0);
 	temp = stack->next;
 	size = 1;
-	while (stack != temp->next)
+	while (stack != temp)
 	{
 		size++;
 		temp = temp->next;
@@ -97,7 +97,7 @@ void	assign_indx(t_stack *stack)
 				count++;
 			cmp = cmp->next;
 		}
-		current->index = cmp->index;
+		current->index = count;
 		current = current->next;
 	}
 }

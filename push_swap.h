@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:11:32 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/23 17:17:25 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/30 12:10:27 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ typedef enum e_strategy
 	MEDIUM,
 	COMPLEX
 }					t_strategy;
+
+typedef struct s_sort_ctx
+{
+	t_strategy		strategy;
+	float			disorder;
+}					t_sort_ctx;
 
 typedef struct s_bench
 {

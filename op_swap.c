@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 11:23:22 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/20 18:39:50 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/29 17:38:53 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ static void	swap_generic(t_stack **stack)
 	if (!stack || !*stack || (*stack == (*stack)->next))
 		return ;
 	if ((*stack)->next->next == *stack)
+	{
 		*stack = (*stack)->next;
+		return ;
+	}
 	temp = *stack;
 	*stack = (*stack)->next;
 	temp->prev->next = *stack;

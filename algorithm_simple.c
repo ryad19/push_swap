@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 16:03:00 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/28 17:07:29 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/29 17:43:08 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	push_min_to_b(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 	tmp = *stack_a;
 	size = stack_size(*stack_a);
 	min_idx = get_min_index(*stack_a);
-	while (tmp && tmp->index != min_idx)
+	while (tmp->index != min_idx)
 	{
 		pos++;
 		tmp = tmp->next;
@@ -61,7 +61,7 @@ void	push_min_to_b(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 }
 
 // Function to sort 3 elements based on checking and comparing the top, middle,
-//and bottom indices in the stack.
+// and bottom indices in the stack.
 
 void	sort_three(t_stack **stack_a, t_bench *bench)
 {
@@ -70,7 +70,7 @@ void	sort_three(t_stack **stack_a, t_bench *bench)
 	int	bot;
 
 	if (stack_size(*stack_a) != 3)
-        return ;
+		return ;
 	top = (*stack_a)->index;
 	mid = (*stack_a)->next->index;
 	bot = (*stack_a)->prev->index;
@@ -92,7 +92,8 @@ void	sort_three(t_stack **stack_a, t_bench *bench)
 	}
 }
 
-// Main Function for simple sortimg adapted only for the first case (sizes from 0 to 2 indeces)
+// Main Function for simple sortimg adapted only for 
+//the first case (sizes from 0 to 2 indeces)
 
 void	sort_simple(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {

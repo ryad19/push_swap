@@ -6,25 +6,25 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 11:27:24 by achafai           #+#    #+#             */
-/*   Updated: 2026/06/28 17:08:27 by achafai          ###   ########.fr       */
+/*   Updated: 2026/06/30 12:24:31 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include<stdio.h>
+#include <stdio.h>
 
 static void	run_strategy(t_stack **a, t_stack **b, t_bench *bench,
-		t_strategy strategy, float disorder)
+		t_sort_ctx *ctx)
 {
-	if (strategy == SIMPLE || (stack_size(*a) <= 5))
+	if (ctx->strategy == SIMPLE || (stack_size(*a) <= 5))
 		sort_simple(a, b, bench);
-	else if (strategy == MEDIUM)
+	else if (ctx->strategy == MEDIUM)
 		sort_medium(a, b, bench);
-	else if (strategy == COMPLEX)
+	else if (ctx->strategy == COMPLEX)
 		sort_complex(a, b, bench);
-	else if (disorder < 0.2f)
+	else if (ctx->disorder < 0.2f)
 		sort_simple(a, b, bench);
-	else if (disorder >= 0.5f)
+	else if (ctx->disorder >= 0.5f)
 		sort_complex(a, b, bench);
 	else
 		sort_medium(a, b, bench);
@@ -44,13 +44,11 @@ static int	handle_flag(char **argv, t_bench *bench, t_strategy *strategy)
 			if (ft_strncmp(argv[i], "--bench", 8) == 0)
 			{
 				bench->enabled = 1;
-				i++;
 				index++;
 			}
 			else
 			{
 				*strategy = parse_strategy(argv[i]);
-				i++;
 				index++;
 			}
 		}
@@ -65,20 +63,23 @@ int	main(int argc, char **argv)
 	t_stack		*a;
 	t_stack		*b;
 	t_bench		bench;
-	t_strategy	strategy;
-	float		disorder;
+	t_sort_ctx	ctx;
 
 	if (argc < 2)
 		return (0);
 	a = NULL;
 	b = NULL;
 	bench = (t_bench){0};
-	strategy = ADAPTIVE;
-	i = handle_flag(argv, &bench, &strategy);
-	printf("Debug: parse_numbers is starting at argv[%d] which is: %s\n", i, argv[i]);
+	ctx.strategy = ADAPTIVE;
+	i = handle_flag(argv, &bench, &ctx.strategy);
 	parse_numbers(&a, argc, argv, i);
-	disorder = compute_disorder(a);
-	run_strategy(&a, &b, &bench, strategy, disorder);
+	if (has_duplicates(a))
+		exit_error(&a, NULL, NULL);
+	assign_indx(a);
+	ctx.disorder = compute_disorder(a);
+	run_strategy(&a, &b, &bench, &ctx);
+	if (bench.enabled)
+		print_bench(&bench, ctx.strategy, ctx.disorder);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
