@@ -1,134 +1,182 @@
-*This project has been created as part of 42 curriculum by achafai, sarrbene.*
+> *This project was created as part of the **42 curriculum** by **achafai** and **sarrbene**.*
 
-# PUSH SWAP
+---
+
+# push_swap
+
+A C program that sorts integers using two stacks and a restricted set of operations, outputting the shortest possible sequence of moves.
+
+---
 
 ## Table of Contents
 
 - [Description](#description)
-- [Instructions](#instructions)
+- [Project Structure](#project-structure)
+- [Operations](#operations)
+- [Usage](#usage)
+- [Benchmark Mode](#benchmark-mode)
 - [Resources](#resources)
+
+---
 
 ## Description
 
-push_swap is a program that sorts integers using a set of operations and 2 stacks implemented in C.
+**push_swap** takes a list of integers as input and prints the sequence of stack operations required to sort them in ascending order, minimizing the total number of moves.
 
-The program takes numeric arguments and outputs the sequence of operations needed to sort them.
+For inputs of **five or fewer integers**, the program uses specialized hardcoded routines to meet the strict operation limits imposed by the project evaluation.
 
-The program has 4 modes, ADAPTIVE, SIMPLE, MEDIUM and COMPLEX. 
-They refer to the algorithms used to sort the numbers, selection sort, chunck-based sort and radix sort.
-The ADAPTIVE mode calculates the disorder and dicides with algorithm to use.
+### Sorting Modes
 
- In case there are less than 6 input there's a specific sorting way used to meet a special requirement in the evaluation.
+The program implements four sorting modes:
 
-### Goal
+| Mode | Algorithm | Triggered when |
+|------|-----------|----------------|
+| `SIMPLE` | Selection Sort | `--simple` flag, or ≤ 5 elements |
+| `MEDIUM` | Chunk-based (Butterfly) Sort | `--medium` flag |
+| `COMPLEX` | Bitwise Radix Sort | `--complex` flag |
+| `ADAPTIVE` *(default)* | Auto-selects based on disorder level | no flag provided |
 
-The project's aim is to:
+In `ADAPTIVE` mode, the disorder level of the input (proportion of out-of-order pairs) determines which algorithm runs:
 
-Write a C program called push_swap which calculates and displays on the
-standard output the smallest program, made of Push swap language operations, that sorts the integers received as arguments.
+- **< 20% disorder** → SIMPLE
+- **20–50% disorder** → MEDIUM
+- **≥ 50% disorder** → COMPLEX
 
-language operations:
-~~~
-|Code |             |Instruction	      |                   Action
-|     |             |                     |
-|`sa` |             | swap a	          |     Swaps the top two elements of stack 
-|     |             |                     |
-|`sb` |	            | swap b	          |     Swaps the top two elements of stack b
-|     |             |                     |
-|`ss` |	            | swap a + swap b	  |     Performs both sa and sb
-|     |             |                     |
-|`pa` |             | push a	          |     Moves the top element of stack b to the top of stack a
-|     |             |                     |
-|`pb` |	            | push b	          |     Moves the top element of stack a to the top of stack b
-|     |             |                     |
-|`ra` |             | rotate a	          |     Shifts all elements of stack a up by one (first becomes last)
-|     |             |                     |
-|`rb` |             | rotate b	          |     Shifts all elements of stack b up by one (first becomes last)
-|     |             |                     |
-|`rr` |	            | rotate a + rotate b |	    Performs both ra and rb
-|     |             |                     |
-|`rra`|	            | reverse rotate a    |     Shifts all elements of stack a down by one (last becomes first)
-|     |             |                     |
-|`rrb`|	            | reverse rotate b    |     Shifts all elements of stack b down by one (last becomes first)
-|     |             |                     |
-|`rrr`|	            | reverse rotate a + b|	    Performs both rra and rrb 
-~~~
+---
 
+## Project Structure
 
+```
+.
+├── libft/             # Custom C standard library
+├── printf/            # ft_printf implementation
+├── srcs/              # Source files (parsing, algorithms, operations, utils)
+│   ├── main.c
+│   ├── parsing.c
+│   ├── stack_utils.c
+│   ├── utils_math.c
+│   ├── utils_memory.c
+│   ├── algorithm_simple.c
+│   ├── sort_medium.c
+│   ├── sort_complex.c
+│   └── op_*.c
+├── push_swap.h        # Header — structs, enums, prototypes
+└── Makefile
+```
 
+---
 
+## Operations
 
+| Operation | Action |
+|-----------|--------|
+| `sa` | Swap the top two elements of Stack A |
+| `sb` | Swap the top two elements of Stack B |
+| `ss` | `sa` and `sb` simultaneously |
+| `pa` | Push the top element of Stack B onto Stack A |
+| `pb` | Push the top element of Stack A onto Stack B |
+| `ra` | Rotate Stack A up — first element becomes last |
+| `rb` | Rotate Stack B up — first element becomes last |
+| `rr` | `ra` and `rb` simultaneously |
+| `rra` | Reverse rotate Stack A — last element becomes first |
+| `rrb` | Reverse rotate Stack B — last element becomes first |
+| `rrr` | `rra` and `rrb` simultaneously |
 
-## Instruction set
+---
 
-Download the repo and go to folder,
-first run make
-~~~
-~ make
-~~~
-you can clean after that by runing, or just run the programm
-~~~
-make clean
-~~~
-to run the program you
-~~~
-./push_swap ...
-~~~ 
-the numbers can be passed as one string separated by space or as a list of numbers.
-You can specify the mode to be used by passing ADAPTIVE, SIMPLE, MEDIUM, COMPLEX as flags.
+## Usage
 
-ex:
-~~~
-./push_swap --simple
-~~~
-You can see some statistics by using bench flag.
-~~~
-./push_swap --bench
-~~~
-NOTE:
+### Build
 
+```bash
+make
+```
 
-### Project Structure
-~~~
-	├── Makefile
-    ├── push_swap.h
-    ├── main.c
-    ├── sort_simple.c
-	├── sort_medium.c
-	├── sort_complex.c
-	├── op_push.c
-	├── op_swap.c
-	├── op_rotate.c
-	├── op_rev_rotate.c
-	├── utils_memory.c
-	├── utils_math.c
-	├── stack_utils.c
-	├── parsing.c
-	├── libft
-	├── printf
-	├── README.md
-~~~
+```bash
+make clean    # remove object files
+make fclean   # remove object files and binary
+make re       # rebuild from scratch
+```
+
+### Run
+
+Pass integers as separate arguments or as a single quoted string:
+
+```bash
+./push_swap 4 67 3 87 23
+./push_swap "4 67 3 87 23"
+```
+
+An optional strategy flag can be passed before the numbers:
+
+```bash
+./push_swap --simple 4 67 3 87 23
+./push_swap --medium 4 67 3 87 23
+./push_swap --complex 4 67 3 87 23
+```
+
+### Verify Output
+
+Pipe the output into the 42 checker to confirm the sort is valid:
+
+```bash
+ARG="4 67 3 87 23"
+./push_swap $ARG | ./checker_linux $ARG
+```
+
+A correct sort prints:
+
+```
+OK
+```
+
+---
+
+## Benchmark Mode
+
+Add `--bench` to print sorting diagnostics to stderr after the run:
+
+```bash
+./push_swap --bench 5 1 4 2 3
+```
+
+Sample output:
+
+```
+[bench] disorder: 80.00%
+[bench] Strategy: ADAPTIVE / O(n log n)
+[bench] total_ops: 12
+[bench] sa: 0, sb: 0, ss: 0, pa: 5, pb: 5
+[bench] ra: 1, rb: 1, rr: 0, rra: 0, rrb: 0, rrr: 0
+```
+
+`--bench` can be combined with a strategy flag:
+
+```bash
+./push_swap --bench --complex 4 67 3 87 23
+```
+
+---
 
 ## Resources
 
+### AI Assistance
 
-### Algorithm & push_swap specific:
+Generative AI was used as a learning companion throughout this project to:
 
-- overview of classic sorting algorithms                   (https://www.geeksforgeeks.org/sorting-algorithms/)
+- Understand chunk-based and bitwise radix sorting algorithms
+- Explore C concepts such as enumerations and bitwise operators
+- Design the project architecture and data structures
+- Develop automated Bash scripts for testing and benchmarking
 
-- Max Chunks To Make Sorted                                (https://www.youtube.com/watch?v=nXnamovQlG8)
+### References
 
+**Algorithms**
+- Overview of classic sorting algorithms
+- *Max Chunks To Make Sorted* (YouTube)
 
-
-### Data Structures & Algorithms:
-
-- algorithm visualization (very helpful for stacks)        (https://visualgo.net/en)
-
-- Data structures and algorithms insertion sort          (https://www.youtube.com/watch?v=8mJ-OhcfpYg)
-
-
-### C / Low-level programming
-
--“Beej’s Guide to C” (very practical)                    (https://beej.us/guide/bgc/)
-- interactive C learning platform                        (https://www.learn-c.org/)
-
+**Data Structures & C**
+- Algorithm visualization tools
+- *Data Structures and Algorithms: Insertion Sort* (YouTube)
+- Beej's Guide to C
+- Interactive C learning platforms
