@@ -6,11 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 15:48:05 by achafai           #+#    #+#             */
-/*   Updated: 2026/07/01 13:12:32 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:40:55 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 int	find_root(int n)
 {

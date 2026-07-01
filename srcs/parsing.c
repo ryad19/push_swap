@@ -6,11 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 17:39:46 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/07/01 13:12:25 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:40:43 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 t_strategy	parse_strategy(char *arg)
 {

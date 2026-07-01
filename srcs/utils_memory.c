@@ -6,11 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 16:52:09 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/07/01 13:12:41 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:41:05 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 void	exit_error(t_stack **a, t_stack **b, char **arr)
 {

@@ -6,11 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 16:03:00 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/07/01 15:21:38 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:40:19 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 // Helper function to find the minimum index currently present in the stack.
 int	get_min_index(t_stack *stack)

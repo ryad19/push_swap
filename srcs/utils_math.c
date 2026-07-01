@@ -6,11 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 17:21:06 by achafai           #+#    #+#             */
-/*   Updated: 2026/07/01 13:12:38 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:41:02 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 float	compute_disorder(t_stack *a)
 {

@@ -6,12 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 11:27:24 by achafai           #+#    #+#             */
-/*   Updated: 2026/07/01 13:12:12 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:41:24 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
-#include <stdio.h>
+#include "push_swap.h"
 
 static void	run_strategy(t_stack **a, t_stack **b, t_bench *bench,
 		t_sort_ctx *ctx)

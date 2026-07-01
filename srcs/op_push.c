@@ -6,11 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:04:29 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/07/01 13:12:15 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:40:30 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 /*Generic logic to push the top element from one stack to another*/
 

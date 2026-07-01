@@ -6,11 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:25:32 by achafai           #+#    #+#             */
-/*   Updated: 2026/07/01 13:12:35 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:40:58 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 t_stack	*new_node(int value)
 {

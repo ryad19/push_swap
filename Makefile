@@ -1,7 +1,7 @@
 NAME	= push_swap
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
-INCLUDES    = -I. -Ilibft -Iprintf
+INCLUDES    = -I includes/ -Ilibft -Iprintf
 
 SRCS        = srcs/main.c \
               srcs/parsing.c \

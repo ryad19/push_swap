@@ -6,11 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 11:23:22 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/07/01 13:12:23 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:40:40 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 /*Generic logic to swap the top tpw elements of a stack*/
 

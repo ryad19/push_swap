@@ -6,11 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 08:07:18 by achafai           #+#    #+#             */
-/*   Updated: 2026/07/01 13:12:28 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:40:47 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 int	get_max_bits(t_stack **stack)
 {

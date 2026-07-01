@@ -6,11 +6,11 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:32:43 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/07/01 13:12:20 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:40:37 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "push_swap.h"
 
 /*Generic logic to shift all elements up by 1 (first becomes last)*/
 
