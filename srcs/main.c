@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 11:27:24 by achafai           #+#    #+#             */
-/*   Updated: 2026/07/01 15:41:24 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 18:55:19 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,12 @@ static int	handle_flag(char **argv, t_bench *bench, t_strategy *strategy)
 
 	i = 1;
 	index = 1;
-	while (i < 3)
+	while (i <= 3)
 	{
 		if (argv[i] && argv[i][0] == '-' && argv[i][1] == '-')
 		{
-			if (ft_strncmp(argv[i], "--bench", 8) == 0)
-			{
-				bench->enabled = 1;
+				*strategy = parse_strategy(argv[i], bench);
 				index++;
-			}
-			else
-			{
-				*strategy = parse_strategy(argv[i]);
-				index++;
-			}
 		}
 		i++;
 	}

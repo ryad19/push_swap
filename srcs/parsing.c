@@ -6,20 +6,29 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 17:39:46 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/07/01 15:40:43 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 19:02:45 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_strategy	parse_strategy(char *arg)
+t_strategy	parse_strategy(char *arg, t_bench *bench)
 {
-	if (ft_strncmp(arg, "--simple", 9) == 0)
+	if (ft_strncmp(arg, "--bench", 8) == 0)
+		bench->enabled = 1;
+	else if (ft_strncmp(arg, "--simple", 9) == 0)
 		return (SIMPLE);
-	if (ft_strncmp(arg, "--medium", 9) == 0)
+	else if (ft_strncmp(arg, "--medium", 9) == 0)
 		return (MEDIUM);
-	if (ft_strncmp(arg, "--complex", 10) == 0)
+	else if (ft_strncmp(arg, "--complex", 10) == 0)
 		return (COMPLEX);
+	else if (ft_strncmp(arg, "--adaptive", 10) == 0)
+		return (ADAPTIVE);
+	else
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
 	return (ADAPTIVE);
 }
 

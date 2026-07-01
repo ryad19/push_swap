@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:11:32 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/07/01 15:42:43 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 18:47:12 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_bench
 }					t_bench;
 
 /* parsing.c */
-t_strategy			parse_strategy(char *arg);
+t_strategy			parse_strategy(char *arg, t_bench *bench);
 void				parse_numbers(t_stack **a, int argc, char **argv,
 						int start_indx);
 int					has_duplicates(t_stack *stack);
