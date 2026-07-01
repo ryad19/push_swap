@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 16:03:00 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/29 17:43:08 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 12:55:40 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	sort_simple(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 		sort_three(stack_a, bench);
 		return ;
 	}
-	else if (size == 4 || size == 5)
+	else
 	{
 		while (stack_size(*stack_a) > 3)
 			push_min_to_b(stack_a, stack_b, bench);

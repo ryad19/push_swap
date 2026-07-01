@@ -1,6 +1,6 @@
 *This project has been created as part of 42 curriculum by achafai, sarrbene.*
 
-# push_swap - C function to sort integers.
+# PUSH SWAP
 
 ## Table of Contents
 
@@ -10,22 +10,88 @@
 
 ## Description
 
-push_swap is a program that sorts integers using a set of constrained operations implemented in C.
+push_swap is a program that sorts integers using a set of operations and 2 stacks implemented in C.
+
 The program takes numeric arguments and outputs the sequence of operations needed to sort them.
+
+The program has 4 modes, ADAPTIVE, SIMPLE, MEDIUM and COMPLEX. 
+They refer to the algorithms used to sort the numbers, selection sort, chunck-based sort and radix sort.
+The ADAPTIVE mode calculates the disorder and dicides with algorithm to use.
+
+ In case there are less than 6 input there's a specific sorting way used to meet a special requirement in the evaluation.
 
 ### Goal
 
-The project aims to:
+The project's aim is to:
 
-. Sort a stack of integers using only a limited set of operations on two stacks.
-. Find an efficient sorting algorithm that minimizes the number of operations.
-. Strengthen problem-solving skills, algorithm design, and data structure implementation in C.
-. Improve proficiency in low-level programming, memory management, and clean, maintainable code.
+Write a C program called push_swap which calculates and displays on the
+standard output the smallest program, made of Push swap language operations, that sorts the integers received as arguments.
+
+language operations:
+~~~
+|Code |             |Instruction	      |                   Action
+|     |             |                     |
+|`sa` |             | swap a	          |     Swaps the top two elements of stack 
+|     |             |                     |
+|`sb` |	            | swap b	          |     Swaps the top two elements of stack b
+|     |             |                     |
+|`ss` |	            | swap a + swap b	  |     Performs both sa and sb
+|     |             |                     |
+|`pa` |             | push a	          |     Moves the top element of stack b to the top of stack a
+|     |             |                     |
+|`pb` |	            | push b	          |     Moves the top element of stack a to the top of stack b
+|     |             |                     |
+|`ra` |             | rotate a	          |     Shifts all elements of stack a up by one (first becomes last)
+|     |             |                     |
+|`rb` |             | rotate b	          |     Shifts all elements of stack b up by one (first becomes last)
+|     |             |                     |
+|`rr` |	            | rotate a + rotate b |	    Performs both ra and rb
+|     |             |                     |
+|`rra`|	            | reverse rotate a    |     Shifts all elements of stack a down by one (last becomes first)
+|     |             |                     |
+|`rrb`|	            | reverse rotate b    |     Shifts all elements of stack b down by one (last becomes first)
+|     |             |                     |
+|`rrr`|	            | reverse rotate a + b|	    Performs both rra and rrb 
+~~~
+
+
+
+
+
+
+## Instruction set
+
+Download the repo and go to folder,
+first run make
+~~~
+~ make
+~~~
+you can clean after that by runing, or just run the programm
+~~~
+make clean
+~~~
+to run the program you
+~~~
+./push_swap ...
+~~~ 
+the numbers can be passed as one string separated by space or as a list of numbers.
+You can specify the mode to be used by passing ADAPTIVE, SIMPLE, MEDIUM, COMPLEX as flags.
+
+ex:
+~~~
+./push_swap --simple
+~~~
+You can see some statistics by using bench flag.
+~~~
+./push_swap --bench
+~~~
+NOTE:
+
 
 ### Project Structure
 ~~~
 	├── Makefile
-   .├── push_swap.h
+    ├── push_swap.h
     ├── main.c
     ├── sort_simple.c
 	├── sort_medium.c
@@ -41,42 +107,7 @@ The project aims to:
 	├── libft
 	├── printf
 	├── README.md
-
-
-
-
-
-
-## Instruction set
-
-If an instruction cannot be executed, the non-applicable part is ignored.
-
-|Code |                 |Instruction	      |                   Action
-|     |                 |                     |
-|`sa` |                 | swap a	          |       Swaps the top two elements of stack 
-|     |                 |                     |
-|`sb` |	                | swap b	          |       Swaps the top two elements of stack b
-|     |                 |                     |
-|`ss` |	                | swap a + swap b	  |       Performs both sa and sb
-|     |                 |                     |
-|`pa` |                 | push a	          |       Moves the top element of stack b to the top of stack a
-|     |                 |                     |
-|`pb` |	                | push b	          |       Moves the top element of stack a to the top of stack b
-|     |                 |                     |
-|`ra` |                 | rotate a	          |       Shifts all elements of stack a up by one (first become|s last)
-|     |                 |                     |
-|`rb` |                 | rotate b	          |       Shifts all elements of stack b up by one (first becomes last)
-|     |                 |                     |
-|`rr` |	                | rotate a + rotate b |	      Performs both ra and rb
-|     |                 |                     |
-|`rra`|	                | reverse rotate a	  |       Shifts all elements of stack a down by one (last becomes first)
-|     |                 |                     |
-|`rrb`|	                | reverse rotate b	  |       Shifts all elements of stack b down by one (last becomes first)
-|     |                 |                     |
-|`rrr`|	                | reverse rotate a + b|	      Performs both rra and rrb 
-
-
-
+~~~
 
 ## Resources
 
