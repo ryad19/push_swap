@@ -6,7 +6,7 @@
 /*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 16:03:00 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/07/01 13:11:45 by achafai          ###   ########.fr       */
+/*   Updated: 2026/07/01 15:21:38 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,26 @@ void	sort_three(t_stack **stack_a, t_bench *bench)
 	int	bot;
 
 	if (stack_size(*stack_a) != 3)
-		return ;
-	top = (*stack_a)->index;
-	mid = (*stack_a)->next->index;
-	bot = (*stack_a)->prev->index;
-	if (top > mid && mid > bot)
-	{
-		sa(stack_a, bench);
-		rra(stack_a, bench);
-	}
-	else if (top > bot && bot > mid)
-		ra(stack_a, bench);
-	else if (mid > top && top > bot)
-		rra(stack_a, bench);
-	else if (top > bot && mid > bot)
-		sa(stack_a, bench);
-	else if (bot > top && mid > bot)
-	{
-		sa(stack_a, bench);
-		ra(stack_a, bench);
-	}
+        return ;
+    top = (*stack_a)->index;
+    mid = (*stack_a)->next->index;
+    bot = (*stack_a)->prev->index;
+    if (top > mid && mid > bot)
+    {
+        sa(stack_a, bench);
+        rra(stack_a, bench);
+    }
+    else if (top > bot && bot > mid)
+        ra(stack_a, bench);
+    else if (mid > top && top > bot)
+        rra(stack_a, bench);
+    else if (top > mid && bot > top) 
+        sa(stack_a, bench);
+    else if (bot > top && mid > bot)
+    {
+        sa(stack_a, bench);
+        ra(stack_a, bench);
+    }
 }
 
 // Main Function for simple sortimg adapted only for 
