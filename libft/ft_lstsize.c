@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_size.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarrbene <sarrbene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:15:08 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/05 16:19:32 by sarrbene         ###   ########.fr       */
+/*   Created: 2026/04/27 07:06:10 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/02 16:13:05 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	stack_size(t_stack *stack)
+int	ft_lstsize(t_list *lst)
 {
-	int	size;
+	t_list	*cpy;
+	int		sum;
 
-	size = 0;
-	while (stack)
+	cpy = lst;
+	sum = 0;
+	while (cpy)
 	{
-		size++;
-		stack = stack->next;
+		sum++;
+		cpy = cpy->next;
 	}
-	return (size);
+	return (sum);
 }

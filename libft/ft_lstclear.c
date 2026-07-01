@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarrbene <sarrbene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: achafai <achafai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:52:09 by sarrbene          #+#    #+#             */
-/*   Updated: 2026/06/05 16:56:13 by sarrbene         ###   ########.fr       */
+/*   Created: 2026/04/27 16:02:03 by achafai           #+#    #+#             */
+/*   Updated: 2026/05/12 19:21:37 by achafai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	print_error_and_exit(t_stack **a, t_stack **b)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (a && *a)
-		free_stack(a);
-	if (b && *b)
-		free_stack(b);
-	write(2, "Error\n", 6);
-	exit(1);
+	t_list	*cpy;
+
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		cpy = *lst;
+		*lst = (*lst)->next;
+		ft_lstdelone(cpy, del);
+	}
 }
